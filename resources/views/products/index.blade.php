@@ -63,13 +63,13 @@
                         <img class="img-fluid" src="{{ $product->cover }}" />
                         <h5 class="card-title mt-3">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
-
+                        <p>{{ $product->category->name }}</p>
                         <div class="row">
                             <div class="col">
-                                <p class="btn btn-danger w-100">{{ number_format($product->price / 1, 2, ',', ' ' )}} &euro;</p>
+                                <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
                             </div>
                             <div class="col">
-                                <a href="product.html" class="btn btn-success w-100">Voir</a>
+                                <a href="{{ route('products.show', ['slug' => $product->slug])}}" class="btn btn-success w-100">Voir</a>
                             </div>
                         </div>
                     </div>
@@ -85,11 +85,11 @@
                     <div class="card">
                         <img class="card-img-top" src="{{ $product->cover }}" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">{{ $product->name }}</a></h4>
+                            <h4 class="card-title"><a href="{{ route('products.show', ['slug' => $product->slug])}}" title="View Product">{{ $product->name }}</a></h4>
                             <p class="card-text">{{ $product->short_description }}</p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger w-100">{{ number_format($product->price / 1, 2, ',', ' ' )}} &euro;</p>
+                                    <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="btn btn-success w-100">Ajouter</a>

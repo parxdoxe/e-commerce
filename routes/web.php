@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -19,7 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
 Route::get('/produits', [ProductController::class, 'index'])->name('products');
+Route::get('/produits/{slug}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/mon-panier', [CartController::class, 'index'])->name('cart');
 Route::get('/ajouter-a-mon-panier/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');

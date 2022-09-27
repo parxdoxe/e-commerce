@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Categories;
+use App\Models\Colors;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,6 +27,8 @@ class ProductsFactory extends Factory
             'released_at' => fake()->date(),
             'price' => fake()->numberBetween(20, 99),
             'promo' => fake()->numberBetween(10, 50),
+            'category_id' => Categories::factory(),
+            
         ];
     }
 }

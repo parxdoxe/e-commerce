@@ -41,14 +41,14 @@
                 <img class="img-fluid border-0" src="{{ $product->cover }}" alt="Card image cap">
                 <div class="card-body">
                     @foreach ($product_favori as $product)
-                    <h4 class="card-title text-center"><a href="product.html" title="View Product">{{ $product->name }}</a></h4>
+                    <h4 class="card-title text-center"><a href="{{ route('products.show', ['slug' => $product->slug])}}" title="View Product">{{ $product->name }}</a></h4>
                     <p class="card-text">{{ $product->description }}</p>
                     <div class="row">
                         <div class="col">
-                            <p class="btn btn-danger w-100">{{ $product->price }} &euro;</p>
+                            <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
                         </div>
                         <div class="col">
-                            <a href="product.html" class="btn btn-success w-100">Voir</a>
+                            <a href="{{ route('products.show', ['slug' => $product->slug])}}" class="btn btn-success w-100">Voir</a>
                         </div>
                     </div>
 
@@ -73,11 +73,11 @@
                             <div class="card">
                                 <img class="card-img-top" src="{{ $product->cover }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">{{ $product->name }}</a></h4>
+                                    <h4 class="card-title"><a href="{{ route('products.show', ['slug' => $product->slug])}}" title="View Product">{{ $product->name }}</a></h4>
                                     <p class="card-text">{{ $product->description }}</p>
                                     <div class="row">
                                         <div class="col">
-                                            <p class="btn btn-danger w-100">{{ number_format($product->price / 1, 2, ',', ' ' )}} &euro;</p>
+                                            <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
                                         </div>
                                         <div class="col">
                                             <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
@@ -108,11 +108,11 @@
                             <div class="card">
                                 <img class="card-img-top" src="{{ $product->cover }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="product.html" title="View Product">{{ $product->name }}</a></h4>
+                                    <h4 class="card-title"><a href="{{ route('products.show', ['slug' => $product->slug])}}" title="View Product">{{ $product->name }}</a></h4>
                                     <p class="card-text">{{ $product->description }}</p>
                                     <div class="row">
                                         <div class="col">
-                                            <p class="btn btn-danger w-100">{{ number_format($product->price / 1, 2, ',', ' ' )}} &euro;</p>
+                                            <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
                                         </div>
                                         <div class="col">
                                             <a href="cart.html" class="btn btn-success w-100">Ajouter</a>

@@ -32,7 +32,7 @@
                             <a class="nav-link" href="{{ route('products') }}">Produits</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
                     </ul>
         
@@ -51,14 +51,25 @@
                         </a>
                     </form>
         
+                    @auth
                     <ul class="navbar-nav pl-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Connexion</a>
+                            <a class="nav-link" href="">{{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inscription</a>
+                            <a class="nav-link" href="{{ route('logout') }}">Deconnexion</a>
                         </li>
                     </ul>
+                    @else
+                    <ul class="navbar-nav pl-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Inscription</a>
+                        </li>
+                    </ul>
+                    @endauth
                 </div>
             </div>
         </nav>
