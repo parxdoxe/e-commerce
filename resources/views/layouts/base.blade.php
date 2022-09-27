@@ -18,7 +18,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.html">Ecommerce</a>
+                <a class="navbar-brand" href="{{ route('home') }}">Ecommerce</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -26,10 +26,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Accueil</a>
+                            <a class="nav-link" href="{{ route('home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="products.html">Produits</a>
+                            <a class="nav-link" href="{{ route('products') }}">Produits</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
@@ -62,6 +62,13 @@
                 </div>
             </div>
         </nav>
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Ecommerce</h1>
+                <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum delectus ad quae cumque voluptates dolorum, neque eveniet, placeat obcaecati magnam vel fugit nulla autem, mollitia consequuntur praesentium sit? Veniam, facere.</p>
+            </div>
+        </section>
 
         
        @yield('content')
