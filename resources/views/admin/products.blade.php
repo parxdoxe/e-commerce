@@ -38,7 +38,7 @@
                 </td>
                 <td>
                     <div class="d-flex">
-                        <a class="btn btn-primary">Modifier</a>
+                        <a href="{{ route('admin.edit', $product) }}" class="btn btn-primary">Modifier</a>
                         <form action="{{ route('admin.delete', $product) }}" method="post">
                             @csrf
                             @method('delete')

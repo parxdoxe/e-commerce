@@ -64,19 +64,19 @@ class AdminController extends Controller
     
     }
 
-    public function edit()
+    public function edit(Products $product)
     {
         return view('admin.edit', [
             'colors' => Colors::all(),
             'categories' => Categories::all(),
-            'products' => Products::all()
+            'product' => $product,
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Products $product)
     {
         $validated = $request->validate([
-            'name' => 'required|min:3|unique:products',
+            'name' => 'required|min:3',
             'description' => 'required|min:10',
             'cover' => 'required|image',
             'promo' => 'required|integer|min:10|max:50',
@@ -87,6 +87,11 @@ class AdminController extends Controller
 
         
         if ($request->hasFile('cover')) {
+
+            if ($product->cover) {
+                Storage::delete(str($product->cover)->remove('/storage/'));
+            }
+
             $validated['cover'] = '/storage/'.$request->file('cover')->store('products');
         }
 
@@ -94,8 +99,8 @@ class AdminController extends Controller
         $validated['favori'] = false;
         $validated['released_at'] = Carbon::now();
 
-        $product = Products::create(collect($validated)->except('colors_id')->all());
-        $product->colors()->attach($validated['colors_id']);
+        $product->update(collect($validated)->except('colors_id')->all());
+        $product->colors()->sync($validated['colors_id']);
        
 
         Products::create($validated);
