@@ -22,24 +22,16 @@
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Filtres</div>
                 <form action="" method="post">
                     <ul class="list-group">
+                        @foreach ($colors as $color)
+    
                         <li class="list-group-item">
                             <div class="form-check">
-                                <input type="checkbox" name="color[]" value="bleu" class="form-check-input" id="color-bleu">
-                                <label class="form-check-label" for="color-bleu">Bleu</label>
+                                <input type="checkbox" style="background: {{$color->name}}" name="color[]" value="bleu" class="form-check-input" id="color-bleu">
+                                <label class="form-check-label" for="color-bleu"></label>
                             </div>
                         </li>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input type="checkbox" name="color[]" value="rouge" class="form-check-input" id="color-red">
-                                <label class="form-check-label" for="color-red">Rouge</label>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="form-check">
-                                <input type="checkbox" name="color[]" value="vert" class="form-check-input" id="color-vert">
-                                <label class="form-check-label" for="color-vert">Vert</label>
-                            </div>
-                        </li>
+
+                        @endforeach
                         <li class="list-group-item">
                             <button class="btn btn-primary w-100">Filtrer</button>
                         </li>
@@ -49,11 +41,9 @@
             <div class="card bg-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Catégories</div>
                 <ul class="list-group category_block">
-                    <li class="list-group-item"><a href="category.html">Cras justo odio</a></li>
-                    <li class="list-group-item"><a href="category.html">Dapibus ac facilisis in</a></li>
-                    <li class="list-group-item"><a href="category.html">Morbi leo risus</a></li>
-                    <li class="list-group-item"><a href="category.html">Porta ac consectetur ac</a></li>
-                    <li class="list-group-item"><a href="category.html">Vestibulum at eros</a></li>
+                    @foreach ($categories as $category)
+                        <li class="list-group-item"><a href="category.html">{{ $category->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="card bg-light mb-3">
@@ -63,7 +53,6 @@
                         <img class="img-fluid" src="{{ $product->cover }}" />
                         <h5 class="card-title mt-3">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
-                        <p>{{ $product->category->name }}</p>
                         <div class="row">
                             <div class="col">
                                 <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>

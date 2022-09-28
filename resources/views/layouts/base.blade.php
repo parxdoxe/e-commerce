@@ -56,6 +56,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="">{{ Auth::user()->name }}</a>
                         </li>
+                        @if (Auth::user()->is_admin)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin') }}">Admin</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Deconnexion</a>
                         </li>

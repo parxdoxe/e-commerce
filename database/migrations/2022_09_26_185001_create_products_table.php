@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('favori');
             $table->string('cover');
             $table->integer('promo');
-            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
+            $table->foreignId('categories_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

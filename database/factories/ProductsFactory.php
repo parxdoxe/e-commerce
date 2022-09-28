@@ -27,8 +27,6 @@ class ProductsFactory extends Factory
             'released_at' => fake()->date(),
             'price' => fake()->numberBetween(20, 99),
             'promo' => fake()->numberBetween(10, 50),
-            'category_id' => Categories::factory(),
-            
         ];
     }
 }

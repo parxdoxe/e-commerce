@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
@@ -35,3 +36,12 @@ Route::get('/deconnexion', [LoginController::class, 'destroy'])->name('logout')-
 
 Route::get('/inscription', [RegisterController::class, 'index'])->name('register');
 Route::post('/inscription', [RegisterController::class, 'store']);
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('admin');
+Route::get('/admin/produits', [AdminController::class, 'product'])->name('admin.product')->middleware('admin');
+Route::get('/admin/produits/nouveau', [AdminController::class, 'create'])->name('admin.create')->middleware('admin');
+Route::post('/admin/produits/nouveau', [AdminController::class, 'store'])->middleware('admin');
+Route::get('/admin/produits/nouveau', [AdminController::class, 'edit'])->name('admin.edit')->middleware('admin');
+Route::post('/admin/produits/nouveau', [AdminController::class, 'update'])->middleware('admin');
+
+

@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $white = Colors::factory()->create(['name' => '#FFFFFF']);
-        $black = Colors::factory()->create(['name' => '#000000']);
 
-        $category = Categories::factory(6)->create();
+        Products::factory(30)->create();
+        Categories::factory(6)->create();
+        Colors::factory(4)->create();
 
         User::factory()->create([
             'email' => 'florian@gmail.com',
@@ -30,9 +30,23 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true,
         ]);
 
-        $product = Products::factory(30)->create();
+        
 
-        // $product->colors()->attach([$white->id, $black->id]);
+        Categories::all()->each(function ($category) {
+            $product = Products::all();
+            $category->products()->saveMany($product->random(mt_rand(1, 6)));
+        });
+        
+
+        $colors = Colors::all();
+
+        Products::all()->each(function ($product) use ($colors) {
+            $product->colors()->attach(
+                $colors->random(rand(1, 4))->pluck('id')->toArray()
+            );
+        });
+
+        
         
         
 

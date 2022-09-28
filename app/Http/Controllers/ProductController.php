@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Colors;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class ProductController extends Controller
             'products' => Products::paginate(6),
             'product_lasted' => Products::all()->sortByDesc('released_at')->take(1),
             'categories' => Categories::all(),
+            'colors' => Colors::all(),
         ]);
     }
 
