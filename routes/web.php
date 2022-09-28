@@ -41,7 +41,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middlewa
 Route::get('/admin/produits', [AdminController::class, 'product'])->name('admin.product')->middleware('admin');
 Route::get('/admin/produits/nouveau', [AdminController::class, 'create'])->name('admin.create')->middleware('admin');
 Route::post('/admin/produits/nouveau', [AdminController::class, 'store'])->middleware('admin');
-Route::get('/admin/produits/nouveau', [AdminController::class, 'edit'])->name('admin.edit')->middleware('admin');
-Route::post('/admin/produits/nouveau', [AdminController::class, 'update'])->middleware('admin');
+Route::get('/admin/produits/{product}/modifier', [AdminController::class, 'edit'])->name('admin.edit')->middleware('admin');
+Route::put('/admin/produits/{product}/modifier', [AdminController::class, 'update'])->middleware('admin');
+Route::delete('/admin/produits/{product}/supprimer', [AdminController::class, 'destroy'])->name('admin.delete')->middleware('admin');
 
 

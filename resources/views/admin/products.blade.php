@@ -14,6 +14,7 @@
                 <th scope="col">Image</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Prix</th>
+                <th scope="col">Couleurs</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -28,9 +29,22 @@
                 </td>
                 <td>{{ $product->name }}</td>
                 <td>{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}}</td>
+                <td >
+                    <div class="d-flex">
+                        @foreach ($product->colors as $color)
+                            <div style="background: {{ $color->name }}; width: 20px; height: 20px; margin-right: 2px" ></div>
+                        @endforeach
+                    </div>
+                </td>
                 <td>
-                    <a class="btn btn-primary">Modifier</a>
-                    <a class="btn btn-danger">Supprimer</a>
+                    <div class="d-flex">
+                        <a class="btn btn-primary">Modifier</a>
+                        <form action="{{ route('admin.delete', $product) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
 
