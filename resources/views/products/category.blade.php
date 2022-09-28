@@ -7,8 +7,9 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Accueil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Produits</li>
+                    <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="category.html">Catégorie</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sous catégorie</li>
                 </ol>
             </nav>
         </div>
@@ -55,7 +56,7 @@
                         <p class="card-text">{{ $product->description }}</p>
                         <div class="row">
                             <div class="col">
-                                <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * (1-($product->promo / 100)), 2, ',', ' ' )}} &euro;</p>
+                                <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * (1-($product->promo / 100)), 2, ',', ' ' ) }} &euro;</p>
                             </div>
                             <div class="col">
                                 <a href="{{ route('products.show', ['slug' => $product->slug])}}" class="btn btn-success w-100">Voir</a>
@@ -78,7 +79,7 @@
                             <p class="card-text">{{ $product->short_description }}</p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * (1-($product->promo / 100)), 2, ',', ' ' )}} &euro;</p>
+                                    <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * (1-($product->promo / 100)), 2, ',', ' ' ) }} &euro;</p>
                                 </div>
                                 <div class="col">
                                     <a href="{{ route('add.to.cart', $product->id)}}" class="btn btn-success w-100">Ajouter</a>

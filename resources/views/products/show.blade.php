@@ -20,16 +20,21 @@
         <div class="col-12 col-lg-6 add_to_cart_block">
             <div class="card bg-light mb-3">
                 <div class="card-body">
-                    <p class="price">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
+                    <p class="price">{{ number_format(($product->price / 1) * (1-($product->promo / 100)), 2, ',', ' ' )}} &euro;</p>
                     <p class="price_discounted">{{ number_format($product->price / 1, 2, ',', ' ' )}} &euro;</p>
                     <form method="get" action="cart.html">
                         <div class="mb-3">
                             <label for="colors">Couleur</label>
                             <select class="form-select" id="colors">
                                 <option selected>Choisir</option>
-                                <option value="1">Bleu</option>
-                                <option value="2">Rouge</option>
-                                <option value="3">Vert</option>
+
+                                @foreach ($colors as $color)
+                                    <option style="background: {{ $color->name }}; width: 20px; height: 20px;" value="{{ $color->id }}">
+                                        
+                                    </option>
+                                @endforeach
+                                
+                                
                             </select>
                         </div>
                         <div class="mb-3">
@@ -48,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="cart.html" class="btn btn-success btn-lg w-100 text-uppercase">
+                        <a href="{{ route('add.to.cart', $product->id)}}" class="btn btn-success btn-lg w-100 text-uppercase">
                             <i class="fa fa-shopping-cart"></i> Ajouter
                         </a>
                     </form>

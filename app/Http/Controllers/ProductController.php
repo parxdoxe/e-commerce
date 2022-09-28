@@ -23,6 +23,20 @@ class ProductController extends Controller
     {
         return view('products.show', [
             'product' => Products::where('slug', $slug)->firstorfail(),
+            'colors' => Colors::all(),
+        ]);
+    }
+
+    public function category(Categories $category, $name)
+    {
+        abort_if($category->name !== $name, 404);
+        
+
+        return view('products.category', [
+            'products' => Products::where('categories_id', '=', $category->id)->paginate(6),
+            'product_lasted' => Products::all()->sortByDesc('released_at')->take(1),
+            'categories' => Categories::all(),
+            'colors' => Colors::all(),
         ]);
     }
 }

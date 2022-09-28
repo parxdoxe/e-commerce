@@ -15,11 +15,11 @@
                     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
                     <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
                 </ol>
-                <div class="carousel-inner h-10">
+                <div class="carousel-inner">
                     @foreach ($products_random as $key => $product)
-                        <div class="carousel-item active">
-                            <img class="d-block w-100 " src="{{ $product->cover}}" alt="First slide">
-                        </div>  
+                        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                            <img class="carousel-img d-block img-fluid" src="{{ $product->cover }}" >
+                        </div>   
                     @endforeach
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -80,7 +80,7 @@
                                             <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
                                         </div>
                                         <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
+                                            <a href="{{ route('add.to.cart', $product->id)}}" class="btn btn-success w-100">Ajouter</a>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                             <p class="btn btn-danger w-100">{{ number_format(($product->price / 1) * $product->price / 100, 2, ',', ' ' )}} &euro;</p>
                                         </div>
                                         <div class="col">
-                                            <a href="cart.html" class="btn btn-success w-100">Ajouter</a>
+                                            <a href="{{ route('add.to.cart', $product->id)}}" class="btn btn-success w-100">Ajouter</a>
                                         </div>
                                     </div>
                                 </div>

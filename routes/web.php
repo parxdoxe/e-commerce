@@ -25,6 +25,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 Route::get('/produits', [ProductController::class, 'index'])->name('products');
 Route::get('/produits/{slug}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/categorie/{category}-{name}', [ProductController::class, 'category'])->name('products.category');
 
 Route::get('/mon-panier', [CartController::class, 'index'])->name('cart');
 Route::get('/ajouter-a-mon-panier/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
@@ -34,7 +35,7 @@ Route::get('/connexion', [LoginController::class, 'index'])->name('login')->midd
 Route::post('/connexion', [LoginController::class, 'store']);
 Route::get('/deconnexion', [LoginController::class, 'destroy'])->name('logout')->middleware('auth');
 
-Route::get('/inscription', [RegisterController::class, 'index'])->name('register');
+Route::get('/inscription', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/inscription', [RegisterController::class, 'store']);
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('admin');
