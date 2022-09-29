@@ -39,4 +39,20 @@ class ProductController extends Controller
             'colors' => Colors::all(),
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $q = $request->q;
+
+        $products = Products::where('name', 'like', "%$q%")
+                    ->orWhere('description', 'like', "%$q%")
+                    ->paginate(6);
+        
+        return view('products.search',[
+            'products' => $products,
+            'product_lasted' => Products::all()->sortByDesc('released_at')->take(1),
+            'categories' => Categories::all(),
+            'colors' => Colors::all(),
+        ]);
+    } 
 }

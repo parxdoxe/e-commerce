@@ -33,14 +33,14 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="" name="email"/>
+                placeholder="" name="email" value="{{ old('email') }}" />
               <label class="form-label" for="form3Example3">Email</label>
             </div>
   
             <!-- Password input -->
             <div class="form-outline mb-3">
               <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="" name="password" />
+                placeholder="" name="password"  />
               <label class="form-label" for="form3Example4">Mot de passe</label>
             </div>
   

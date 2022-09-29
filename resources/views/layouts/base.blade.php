@@ -15,6 +15,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    @livewireStyles
     </head>
     <body>
 
@@ -38,9 +40,9 @@
                         </li>
                     </ul>
         
-                    <form class="form-inline my-2 my-lg-0 d-inline-flex">
+                    <form action="{{ route('products.search') }}" class="form-inline my-2 my-lg-0 d-inline-flex">
                         <div class="input-group input-group-sm">
-                            <input type="text" class="form-control" placeholder="Recherche...">
+                            <input type="text" name="q" class="form-control" placeholder="Recherche..." value="{{ request()->q ?? '' }}">
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-secondary btn-number">
                                     <i class="fa fa-search"></i>
@@ -145,8 +147,9 @@
         </div>
     </footer>
 
-       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    @livewireScripts
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

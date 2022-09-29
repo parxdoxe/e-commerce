@@ -22,11 +22,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 Route::post('/contact/envoie-email', [ContactController::class, 'sendEmail'])->name('contact.email');
 
 Route::get('/produits', [ProductController::class, 'index'])->name('products');
 Route::get('/produits/{slug}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/categorie/{category}-{name}', [ProductController::class, 'category'])->name('products.category');
 
 Route::get('/mon-panier', [CartController::class, 'index'])->name('cart');

@@ -31,7 +31,7 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input type="email" name="email" id="form3Example3c" class="form-control" />
+                        <input type="email" name="email" id="form3Example3c" class="form-control" value="{{ old('email') }}" />
                         <label class="form-label" for="form3Example3c">Email</label>
                       </div>
                     </div>
