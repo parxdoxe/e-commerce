@@ -24,11 +24,13 @@ class CartController extends Controller
             $cart[$id] = [
                 'name' => $product->name,
                 'quantity' => 1,
-                "price" => number_format(($product->price / 1) * (1-($product->promo / 100)), 2, ',', ' ' ),
+                "price" => $product->price,
+                "promo" => $product->promo,
                 "cover" => $product->cover,
                 "color" => $product->colors,
             ];
         }
+        
 
         session()->put('cart', $cart);
         return redirect()->back();

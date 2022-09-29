@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Colors;
 use App\Models\Products;
+use App\Models\Reviews;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -24,6 +25,7 @@ class ProductController extends Controller
         return view('products.show', [
             'product' => Products::where('slug', $slug)->firstorfail(),
             'colors' => Colors::all(),
+            'reviews' => Reviews::all(),
         ]);
     }
 

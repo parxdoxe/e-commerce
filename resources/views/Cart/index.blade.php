@@ -34,7 +34,10 @@
                             <td>{{ $product['name']}}</td>
                             <td>En stock</td>
                             <td><input class="form-control" type="text" value="{{ $product['quantity']}}" /></td>
-                            <td class="text-right">  {{ $product['price'] }} </td>
+                            @php
+                                $totalProduct = number_format((($product['price'] / 1) * (1-($product['promo'] / 100)) *$product['quantity']), 2, ',', ' ' )
+                            @endphp
+                            <td class="text-right"> {{ $totalProduct }}  </td>
                             <td class="text-right"><a href="{{ route('remove.to.cart', $key )}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
                         </tr>
                         @endforeach 
@@ -45,7 +48,7 @@
                             <td></td>
                             <td></td>
                             <td>Sous-Total</td>
-                            <td class="text-right">255,90 €</td>
+                            <td class="text-right"></td>
                         </tr>
                         <tr>
                             <td></td>

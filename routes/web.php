@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::post('/contact/envoie-email', [ContactController::class, 'sendEmail'])->n
 
 Route::get('/produits', [ProductController::class, 'index'])->name('products');
 Route::get('/produits/{slug}', [ProductController::class, 'show'])->name('products.show');
+Route::post('/produits/{product}', [ReviewController::class, 'store'])->name('products.create.reviews');
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/categorie/{category}-{name}', [ProductController::class, 'category'])->name('products.category');
 

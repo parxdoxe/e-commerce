@@ -111,38 +111,31 @@
             <div class="card border-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-comment"></i> Avis</div>
                 <div class="card-body">
+                    @foreach ($reviews as $review)
+                            
                     <div class="review">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                        <meta itemprop="datePublished" content="01-01-2016">28 mars 2019
+                        <meta itemprop="datePublished" content="01-01-2016">{{ $review->released_at }}
 
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        par Paul Smith
+                        @for ($i = 1; $i < 5; $i++)
+                            @if ($i <= $review->note)
+                                <span class="fa fa-star"></span>
+                            @endif
+                        @endfor
+                        
+                        
+                        par {{ $review->name }}
                         <p class="blockquote">
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <p class="mb-0">{{ $review->content }}</p>
                         </p>
                         <hr>
                     </div>
-                    <div class="review">
-                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                        <meta itemprop="datePublished" content="01-01-2016">29 mars 2019
+                    @endforeach
+                    
 
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        <span class="fa fa-star" aria-hidden="true"></span>
-                        par Paul Smith
-                        <p class="blockquote">
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        </p>
-                        <hr>
-                    </div>
-
-                    <form action="" method="post">
+                    <form action="{{ route('products.create.reviews', $product) }}" method="post">
+                        @csrf
+                       
                         <div class="mb-3">
                             <label for="name">Nom</label>
                             <input type="text" name="name" class="form-control" id="name">
@@ -159,8 +152,8 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" class="form-control"></textarea>
+                            <label for="content">Message</label>
+                            <textarea name="content" id="content" class="form-control"></textarea>
                         </div>
 
                         <button class="btn btn-primary">Envoyer</button>
