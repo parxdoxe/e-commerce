@@ -107,6 +107,8 @@
         </div>
 
         <!-- Reviews -->
+        
+            
         <div class="col-12" id="reviews">
             <div class="card border-light mb-3">
                 <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-comment"></i> Avis</div>
@@ -132,13 +134,15 @@
                     </div>
                     @endforeach
                     
-
+                    @auth
+                        
+                    
                     <form action="{{ route('products.create.reviews', $product) }}" method="post">
                         @csrf
                        
                         <div class="mb-3">
                             <label for="name">Nom</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                            <input readonly type="text" name="name" class="form-control" id="name" value="{{ Auth::user()->name }}">
                         </div>
                         <div class="mb-3">
                             <label for="note">Note</label>
@@ -158,9 +162,11 @@
 
                         <button class="btn btn-primary">Envoyer</button>
                     </form>
+                    @endauth
                 </div>
             </div>
         </div>
     </div>
+    
 </div>
 @endsection
