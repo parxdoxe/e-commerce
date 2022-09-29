@@ -1,5 +1,13 @@
 @extends('layouts.base')
 
+@section('title')
+    Categorie - @parent
+@endsection
+
+@section('sous-title')
+    Catégorie
+@endsection
+
 
 @section('content')
 <div class="container">

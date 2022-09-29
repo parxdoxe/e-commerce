@@ -1,5 +1,13 @@
 @extends('layouts.base')
 
+@section('title')
+  Inscription - @parent
+@endsection
+
+@section('sous-title')
+    Inscription
+@endsection
+
 
 @section('content')
 @foreach ($errors->all() as $error)

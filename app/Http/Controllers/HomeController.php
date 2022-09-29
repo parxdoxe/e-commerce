@@ -18,10 +18,4 @@ class HomeController extends Controller
             'products_lasted' => Products::all()->sortByDesc('released_at')->take(4),
         ]);
     }
-
-
-    public function contact()
-    {
-        return view('contact');
-    }
 }

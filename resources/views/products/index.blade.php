@@ -1,5 +1,13 @@
 @extends('layouts.base')
 
+@section('title')
+    Produits - @parent
+@endsection
+
+@section('sous-title')
+    Produits
+@endsection
+
 
 @section('content')
 <div class="container">

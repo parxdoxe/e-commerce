@@ -1,5 +1,13 @@
 @extends('layouts.base')
 
+@section('title')
+    Mon panier - @parent
+@endsection
+
+@section('sous-title')
+    Mon panier
+@endsection
+
 
 @section('content')
 @if (session('cart'))

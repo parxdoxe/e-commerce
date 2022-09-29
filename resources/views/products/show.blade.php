@@ -1,5 +1,13 @@
 @extends('layouts.base')
 
+@section('title')
+    Produit - {{ $product->name }}
+@endsection
+
+@section('sous-title')
+    {{ $product->name }}
+@endsection
+
 
 @section('content')
 <div class="container">

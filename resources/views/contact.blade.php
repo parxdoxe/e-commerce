@@ -1,27 +1,47 @@
 @extends('layouts.base')
 
+@section('title')
+    Contact - @parent
+@endsection
+
+@section('sous-title')
+    Contact
+@endsection
+
 
 @section('content')
 <div class="container">
+
+    @foreach ($errors->all() as $error)
+        <p>{{ $error }}</p>
+    @endforeach
+
+    @if (session('message'))
+    <div class="alert alert-success" role="alert">
+        {{ session('message') }}
+    </div>
+    @endif
+
     <div class="row">
         <div class="col">
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Contactez-nous.
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="{{ route('contact.email') }}" method="post">
+                        @csrf
                         <div class="mb-3">
                             <label for="name">Nom</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Votre nom">
+                            <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" placeholder="Votre nom">
                         </div>
                         <div class="mb-3">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Votre email">
+                            <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Votre email">
                             <small id="emailHelp" class="form-text text-muted">Nous ne partagerons pas votre email.</small>
                         </div>
                         <div class="mb-3">
                             <label for="message">Message</label>
-                            <textarea class="form-control" id="message" rows="6"></textarea>
+                            <textarea class="form-control" name="message" id="message" rows="6"></textarea>
                         </div>
                         <div class="mx-auto">
                         <button type="submit" class="btn btn-primary text-right">Envoyer</button></div>

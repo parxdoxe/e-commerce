@@ -1,5 +1,13 @@
 @extends('layouts.base')
 
+@section('title')
+    Connexion - @parent
+@endsection
+
+@section('sous-title')
+    Connexion
+@endsection
+
 
 @section('content')
 
